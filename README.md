@@ -7,7 +7,7 @@ ACCESS_TOKEN_SECRET=<your secret key>
 REFRESH_TOKEN_SECRET=<your secret key>
 ```
 
--run the nodejs express application:
+- run the nodejs express application:
 
 ```bash
 npm i
