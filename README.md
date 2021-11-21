@@ -13,3 +13,9 @@ REFRESH_TOKEN_SECRET=<your secret key>
 npm i
 npm run dev
 ```
+
+- install with docker compose:
+
+```
+docker-compose up
+```
