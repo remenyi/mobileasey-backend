@@ -103,6 +103,7 @@
 
 const authenticateMW = require('../middleware/authenticateMW');
 const authorizeMW = require('../middleware/authorizeMW');
+const getAllEquipmentMW = require("../middleware/equipmentMWs/getAllEquipmentMW");
 
 module.exports = function(app) {
 
@@ -154,8 +155,7 @@ module.exports = function(app) {
    *       401:
    *         description: NOT authenticated
    */
-  app.get('/equipments', authorizeMW, async (req, res, next) => {
-    res.send('list of devices');
+  app.get('/equipments', authorizeMW, getAllEquipmentMW, async (req, res, next) => {
   });
 
   /**
