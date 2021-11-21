@@ -101,6 +101,9 @@
  *       bearerFormat: JWT
  */
 
+const authenticateMW = require('../middleware/authenticateMW');
+const authorizeMW = require('../middleware/authorizeMW');
+
 module.exports = function(app) {
 
   /**
@@ -123,8 +126,13 @@ module.exports = function(app) {
    *      '401':
    *        description: NOT authenticated
    */
-  app.post('/login', (req, res) => {
-    res.send('login');
+  app.post('/login', async (req, res) => {
+    const accessToken = await authenticateMW(req.body.email, req.body.password);
+    if (!accessToken) {
+      res.status(401).send();
+      return;
+    }
+    res.json({accessToken: accessToken});
   });
 
   /**
@@ -146,7 +154,7 @@ module.exports = function(app) {
    *       401:
    *         description: NOT authenticated
    */
-  app.get('/equipments', (req, res) => {
+  app.get('/equipments', authorizeMW, async (req, res, next) => {
     res.send('list of devices');
   });
 

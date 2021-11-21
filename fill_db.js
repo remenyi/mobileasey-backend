@@ -18,8 +18,8 @@ User.findOne({name: "Példa Béla"}, (err, user) => {
             end: new Date("2021-11-18T11:11:18Z"),
             reservation_code: null,
             _user: user._id,
-            _device: device._id})
-        }
+            _device: device._id});
         user.save();
         device.save();
+        }
 })
