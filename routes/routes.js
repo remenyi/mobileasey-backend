@@ -244,7 +244,7 @@ module.exports = function(app) {
    *         401:
    *           description: NOT authenticated
    */
-  app.get('/reservations', getAllReservationMW, (req, res) => {
+  app.get('/reservations', authorizeMW, getAllReservationMW, (req, res) => {
   });
 
   /**
@@ -271,7 +271,7 @@ module.exports = function(app) {
    *         401:
    *           description: NOT authenticated
    */
-  app.get('/reservations/:reservationID', getReservationMW, (req, res) => {
+  app.get('/reservations/:reservationID', authorizeMW, getReservationMW, (req, res) => {
   });
 
   /**
@@ -296,7 +296,7 @@ module.exports = function(app) {
    *           schema:
    *             $ref: '#/components/schemas/ReservationCodeDTO'
    */  
-  app.post('/reservations/:reservationID/start', (req, res) => {
+  app.post('/reservations/:reservationID/start', authorizeMW, (req, res) => {
     res.send('reservation ended');
   });
 
@@ -322,7 +322,7 @@ module.exports = function(app) {
    *         401:
    *           description: NOT authenticated
    */
-  app.post('/reservations/end', (req, res) => {
+  app.post('/reservations/end', authorizeMW, (req, res) => {
     res.send('reservation ended');
   });
 }
