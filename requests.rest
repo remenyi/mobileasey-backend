@@ -26,3 +26,8 @@ Content-Type: application/json
     "from": "2021-11-1 11:11:10.000Z",
     "to": "2021-11-2 11:11:20.000Z"
 }
+
+###
+
+GET http://localhost:3000/reservations
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTlhYTc4YmMzOGI4ZjgzZjczNTg2YmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTYzNzYxNTc3NiwiZXhwIjoxNjM3NjUxNzc2fQ.X0sWTpvv0qIsBFRagUmyTq_ZgaH4ZyW7qJ7KbmOqVsk
