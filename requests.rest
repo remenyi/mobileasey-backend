@@ -10,3 +10,19 @@ Content-Type: application/json
 
 GET http://localhost:3000/equipments
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTlhYTc4YmMzOGI4ZjgzZjczNTg2YmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTYzNzYxNTc3NiwiZXhwIjoxNjM3NjUxNzc2fQ.X0sWTpvv0qIsBFRagUmyTq_ZgaH4ZyW7qJ7KbmOqVsk
+
+###
+
+GET http://localhost:3000/equipments/619aa78bc38b8f83f73586be/reservedDates
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTlhYTc4YmMzOGI4ZjgzZjczNTg2YmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTYzNzYxNTc3NiwiZXhwIjoxNjM3NjUxNzc2fQ.X0sWTpvv0qIsBFRagUmyTq_ZgaH4ZyW7qJ7KbmOqVsk
+
+###
+
+POST http://localhost:3000/equipments/619aa78bc38b8f83f73586be/reserve
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTlhYTc4YmMzOGI4ZjgzZjczNTg2YmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTYzNzYxNTc3NiwiZXhwIjoxNjM3NjUxNzc2fQ.X0sWTpvv0qIsBFRagUmyTq_ZgaH4ZyW7qJ7KbmOqVsk
+Content-Type: application/json
+
+{
+    "from": "2021-11-1 11:11:10.000Z",
+    "to": "2021-11-2 11:11:20.000Z"
+}
