@@ -19,7 +19,28 @@ User.findOne({name: "Példa Béla"}, (err, user) => {
             reservation_code: null,
             _user: user._id,
             _device: device._id});
-        user.save();
         device.save();
+        user.save();
         }
+})
+
+User.findOne({name: "Marky Mark"}, (err, user) => {
+    if(!user){
+        user = new User({ name: "Marky Mark",
+            password: "tita",
+            email: "marky@mark.hu",
+            is_admin: false,}, err => {
+                if (err) console.log(err);
+            });
+        user.save();
+        }
+})
+
+Device.findOne({name: "Lenovo ThinkPad T495"}, (err, device) => {
+    if(!device) {
+        device = new Device({name: "Lenovo ThinkPad T495", type: "Laptop"}, (err) => {
+            if (err) console.log(err);
+        });
+        device.save();
+    }
 })
