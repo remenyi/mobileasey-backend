@@ -107,6 +107,7 @@ const getAllEquipmentMW = require("../middleware/equipmentMWs/getAllEquipmentMW"
 const getReservedDatesMW = require('../middleware/equipmentMWs/getReservedDatesMW');
 const reserveMW = require('../middleware/equipmentMWs/reserveMW');
 const getAllReservationMW = require('../middleware/reservationMWs/getAllReservationMW');
+const getReservationMW = require('../middleware/reservationMWs/getReservationMW');
 
 module.exports = function(app) {
 
@@ -270,8 +271,7 @@ module.exports = function(app) {
    *         401:
    *           description: NOT authenticated
    */
-  app.put('/reservations/:reservationID', (req, res) => {
-      res.send('reservation started');
+  app.get('/reservations/:reservationID', getReservationMW, (req, res) => {
   });
 
   /**
