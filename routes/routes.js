@@ -108,6 +108,7 @@ const getReservedDatesMW = require('../middleware/equipmentMWs/getReservedDatesM
 const reserveMW = require('../middleware/equipmentMWs/reserveMW');
 const getAllReservationMW = require('../middleware/reservationMWs/getAllReservationMW');
 const getReservationMW = require('../middleware/reservationMWs/getReservationMW');
+const startMW = require('../middleware/reservationMWs/startMW');
 
 module.exports = function(app) {
 
@@ -296,8 +297,7 @@ module.exports = function(app) {
    *           schema:
    *             $ref: '#/components/schemas/ReservationCodeDTO'
    */  
-  app.post('/reservations/:reservationID/start', authorizeMW, (req, res) => {
-    res.send('reservation ended');
+  app.post('/reservations/:reservationID/start', startMW,  authorizeMW, (req, res) => {
   });
 
   /**

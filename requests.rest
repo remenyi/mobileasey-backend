@@ -36,3 +36,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTlhYTc4Y
 
 GET http://localhost:3000/reservations/619c2030aed96431776d73fa
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTlhYTc4YmMzOGI4ZjgzZjczNTg2YmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTYzNzYxNTc3NiwiZXhwIjoxNjM3NjUxNzc2fQ.X0sWTpvv0qIsBFRagUmyTq_ZgaH4ZyW7qJ7KbmOqVsk
+
+###
+
+POST http://localhost:3000/reservations/619c2030aed96431776d73fa/start
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTlhYTc4YmMzOGI4ZjgzZjczNTg2YmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTYzNzYxNTc3NiwiZXhwIjoxNjM3NjUxNzc2fQ.X0sWTpvv0qIsBFRagUmyTq_ZgaH4ZyW7qJ7KbmOqVsk
+Content-Type: application/json
+
+{
+    "reservationCode": 3453451
+}
