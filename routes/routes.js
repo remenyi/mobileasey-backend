@@ -110,6 +110,7 @@ const getAllReservationMW = require('../middleware/reservationMWs/getAllReservat
 const getReservationMW = require('../middleware/reservationMWs/getReservationMW');
 const startMW = require('../middleware/reservationMWs/startMW');
 const endMW = require('../middleware/reservationMWs/endMW');
+const authorizeAdminMW = require('../middleware/authorizeAdminMW');
 
 module.exports = function(app) {
 
@@ -298,7 +299,7 @@ module.exports = function(app) {
    *           schema:
    *             $ref: '#/components/schemas/ReservationCodeDTO'
    */  
-  app.post('/reservations/:reservationID/start', startMW,  authorizeMW, (req, res) => {
+  app.post('/reservations/:reservationID/start', startMW, authorizeAdminMW, authorizeMW, (req, res) => {
   });
 
   /**
@@ -323,6 +324,6 @@ module.exports = function(app) {
    *         401:
    *           description: NOT authenticated
    */
-  app.post('/reservations/end', authorizeMW, endMW, (req, res) => {
+  app.post('/reservations/end', authorizeMW, authorizeAdminMW, endMW, (req, res) => {
   });
 }
