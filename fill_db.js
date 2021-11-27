@@ -24,12 +24,12 @@ User.findOne({name: "Példa Béla"}, (err, user) => {
         }
 })
 
-User.findOne({name: "Marky Mark"}, (err, user) => {
+User.findOne({name: "Admin boi"}, (err, user) => {
     if(!user){
-        user = new User({ name: "Marky Mark",
-            password: "tita",
-            email: "marky@mark.hu",
-            is_admin: false,}, err => {
+        user = new User({ name: "Admin boi",
+            password: "cica",
+            email: "admin@pelda.hu",
+            is_admin: true,}, err => {
                 if (err) console.log(err);
             });
         user.save();
