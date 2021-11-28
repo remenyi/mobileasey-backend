@@ -9,5 +9,6 @@ module.exports = async function(req, res, next) {
         if (err) return res.sendStatus(404);
         if (!ret) return res.sendStatus(404);
         if (ret.deletedCount < 1) return res.sendStatus(404);
+        res.sendStatus(200);
     });
 }

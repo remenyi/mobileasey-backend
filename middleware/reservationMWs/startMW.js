@@ -10,5 +10,6 @@ module.exports = async function(req, res, next) {
     Reservation.findOneAndUpdate({_id: new ObjectId(reservationID)}, {reservation_code: reservationCode}, (err, r) => {
         if (err) return res.sendStatus(404);
         if (!r) return res.sendStatus(404);
+        res.sendStatus(200);
     });
 }
