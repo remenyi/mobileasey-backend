@@ -39,7 +39,7 @@ module.exports = async function(req, res, next) {
         const d = await Device.findOne({_id: new ObjectId(equipmentID)});
         const uDTO = {id: u._id, email: u.email};
         const dDTO = {name: d.name, equipmentId: d._id, equipmentType: d.type};
-        const reservationDTO = {equipment: dDTO, user: uDTO, from: r.start, to: r.end, reservationID: r._id, reservationCode: r.reservation_code};
+        const reservationDTO = {equipment: dDTO, user: uDTO, from: r.start, to: r.end, reservationId: r._id, reservationCode: r.reservation_code};
         res.send(reservationDTO);
         next();
     });

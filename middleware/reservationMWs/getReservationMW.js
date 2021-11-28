@@ -11,7 +11,7 @@ module.exports = async function(req, res, next) {
         r = r[0];
         if (err) return res.sendStatus(404);
         if (!r) return res.sendStatus(404);
-        const reservationDTO = {equipment: {name: r.devices[0].name, equipmentId: r.devices[0]._id, equipmentType: r.devices[0].type}, user: {id: r.users[0]._id, email: r.users[0].email}, from: r.start, to: r.end, reservationID: r._id, reservationCode: r.reservation_code};
+        const reservationDTO = {equipment: {name: r.devices[0].name, equipmentId: r.devices[0]._id, equipmentType: r.devices[0].type}, user: {id: r.users[0]._id, email: r.users[0].email}, from: r.start, to: r.end, reservationId: r._id, reservationCode: r.reservation_code};
         res.send(reservationDTO);
         next();
     });
