@@ -300,7 +300,7 @@ module.exports = function(app) {
    *           schema:
    *             $ref: '#/components/schemas/ReservationCodeDTO'
    */  
-  app.post('/reservations/:reservationID/start', startMW, authorizeAdminMW, authorizeMW, (req, res) => {
+  app.post('/reservations/:reservationID/start', authorizeMW, authorizeAdminMW, startMW, (req, res) => {
   });
 
   /**
