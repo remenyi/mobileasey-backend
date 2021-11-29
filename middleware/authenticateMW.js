@@ -4,12 +4,16 @@ require('dotenv').config()
 
 let refreshTokens = []
 
-module.exports = async function(email, password){
-    const user = await User.findOne({email: email, password: password});
-    if(!user)
-        return false;
-    const accessToken = jwt.sign({sub: user._id.toString(), admin: user.is_admin}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "10h" });
-    const refreshToken = jwt.sign(user._id.toString(), process.env.REFRESH_TOKEN_SECRET);
-    refreshTokens.push(refreshToken)
-    return accessToken;
+module.exports = async function(req, res, next){
+    User.findOne({email: req.body.email}, (err, user) => {
+        if (user === null || err) return res.sendStatus(404);
+        if (user.validPassword(req.body.password)){
+            const accessToken = jwt.sign({sub: user._id.toString(), admin: user.is_admin}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "10h" });
+            res.json({accessToken: accessToken});
+            next();
+        }
+        else {
+            res.sendStatus(401);
+        }
+    });
 };

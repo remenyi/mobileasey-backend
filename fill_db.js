@@ -2,15 +2,16 @@ var db = require("./config/db");
 var Device = require("./models/device");
 var Reservation = require("./models/reservation");
 var User = require("./models/user");
+var crypto = require("crypto");
 
 User.findOne({name: "Példa Béla"}, (err, user) => {
     if(!user){
         user = new User({ name: "Példa Béla",
-            password: "cica",
             email: "pbela@pelda.hu",
             is_admin: false,}, err => {
                 if (err) console.log(err);
             });
+        user.setPassword('cica');
         device = new Device({name: "Lenovo ThinkPad T480", type: "Laptop"}, (err) => {
             if (err) console.log(err);
         });
@@ -27,11 +28,11 @@ User.findOne({name: "Példa Béla"}, (err, user) => {
 User.findOne({name: "Admin boi"}, (err, user) => {
     if(!user){
         user = new User({ name: "Admin boi",
-            password: "cica",
             email: "admin@pelda.hu",
             is_admin: true,}, err => {
                 if (err) console.log(err);
             });
+        user.setPassword('cica');
         user.save();
         }
 })

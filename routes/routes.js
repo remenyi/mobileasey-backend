@@ -134,14 +134,7 @@ module.exports = function(app) {
    *      '401':
    *        description: NOT authenticated
    */
-  app.post('/login', async (req, res) => {
-    const accessToken = await authenticateMW(req.body.email, req.body.password);
-    if (!accessToken) {
-      res.status(401).send();
-      return;
-    }
-    res.json({accessToken: accessToken});
-  });
+  app.post('/login', authenticateMW);
 
   /**
    * @swagger
