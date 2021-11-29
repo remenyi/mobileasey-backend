@@ -2,29 +2,65 @@ version: '3.3'
 services:
   node:
     image: node
-    container_name: node
+    container_name: node-mobileasey
     command: >
       sh -c "npm i
              npm run dev"
-#    build:
-#      context: /app
     working_dir: /app
     restart: unless-stopped
-    ports:
-      - 3000:8080
     volumes:
       - .:/app
     depends_on:
-      - mongo
+      - mongo-mobileasey
+    networks:
+      backend:
+        ipv4_address: 172.33.0.2
     
   mongo:
     image: mongo
-    container_name: mongo
+    container_name: mongo-mobileasey
     restart: unless-stopped
-    ports:
-      - 27017:27017
     volumes:
       - mongodb:/data/db
+    networks:
+      backend:
+        ipv4_address: 172.33.0.3
+
+  nginx:
+    image: nginx:1.21.4
+    container_name: nginx-mobileasey
+    restart: unless-stopped
+    environment:
+      APP_DEBUG: "true"
+    ports:
+      - 443:443
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./cert:/etc/nginx/certs
+    depends_on:
+      - node-mobileasey
+      - mongo-mobileasey
+    networks:
+      frontend:
+        ipv4_address: 172.34.0.2
+      backend:
+        ipv4_address: 172.33.0.6
+  
 
 volumes:
   mongodb:
+    driver: local
+  nginxdata:
+    driver: local
+
+networks:
+  backend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.33.0.0/16
+  frontend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.34.0.0/16
