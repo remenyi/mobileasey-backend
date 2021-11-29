@@ -40,38 +40,24 @@
  *             equipmentType: laptop
  *             
  *     ReservationDTO:
- *       type: object
- *       required:
- *         - device
- *         - booker
- *         - from
- *         - to
- *         - reservationId
- *       properties:
- *         deviceID:
- *           type: integer
- *           description: Device name
- *         bookerID:
- *           type: integer
- *           description: Name of booker
- *         from:
- *           type: string
- *           description: Reserved from (iso8601)
- *         to:
- *           type: string
- *           description: Reserved until (iso8601)
- *         reservationID:
- *           type: integer
- *           description: Reservation ID
- *         reservationCode:
- *           type: integer
- *           description: Reservation code (QR code)
- *       example:
- *         from: '2021-11-17T11:11:18Z'
- *         to: '2021-11-17T11:11:18Z'
- *         deviceID: 123123
- *         bookerID: 252342
- *         reservationId: 7498762
+ *           type: object
+ *           properties:
+ *             equipment:
+ *               $ref: '#/components/schemas/EquipmentDTO'
+ *             user:
+ *               $ref: '#/components/schemas/UserDTO'
+ *             from:
+ *               type: string
+ *               description: Reserved from (iso8601)
+ *             to:
+ *               type: string
+ *               description: Reserved until (iso8601)
+ *             reservationID:
+ *               type: string
+ *               description: Reservation ID
+ *             reservationCode:
+ *               type: string
+ *               description: Reservation code (QR code)
  *     
  *     ReserveDateDTO:
  *       type: object
